@@ -24,10 +24,11 @@ h3, p{
 header{
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.09);
   margin-bottom: 10px;
+  font-size: larger;
+
 }
 
 a{
-  font-size: larger;
   background-color: unset;
   border:unset;
   cursor:pointer;
@@ -90,4 +91,8 @@ footer{
   box-shadow: -1px -3px 5px rgba(0, 0, 0, 0.09);
   padding-top: 2px;
   margin-top: auto;
+}
+
+footer a{
+  text-decoration: underline;
 }
