@@ -3,7 +3,6 @@ const bicicletas = [
   {
     id:1,
     nombre: "Veloziraptor",
-    img: "./img/productos/1.jpg",
     precio: 111111,
   },
   {
