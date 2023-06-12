@@ -32,6 +32,7 @@ function agregarAlCarrito(producto){
   }
 }
 
+/** Resta una unidad de un producto del carrito */
 function restarAlCarrito(producto){
   let memoria = JSON.parse(localStorage.getItem("bicicletas"));
   let cantidadProductoFinal = 0;

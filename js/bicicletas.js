@@ -1,3 +1,4 @@
+/* Esta lista podría ser reemplazada por la respuesta de un backend */
 const bicicletas = [
   {
     id:1,

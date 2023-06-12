@@ -1,5 +1,6 @@
 const contenedorTarjetas = document.getElementById("productos-container");
 
+/** Crea las tarjetas de productos teniendo en cuenta la lista en bicicletas.js */
 function crearTarjetasProductosInicio(productos){
   productos.forEach(producto => {
     const nuevaBicicleta = document.createElement("div");

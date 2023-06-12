@@ -17,9 +17,9 @@ h3, p{
   margin: 5px;
 }
 
-/* p{
-  margin: 0;
-} */
+.escondido{
+  display: none;
+}
 
 header{
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.09);
@@ -36,6 +36,7 @@ a{
   transition: 200ms;
   color: var(--color-texto);
 }
+
 button{
   transition: 200ms;
 }
@@ -80,10 +81,6 @@ header nav img{
   aspect-ratio: 1;
   text-align: center;
   /* margin-bottom: 15px; */
-}
-
-.escondido{
-  display: none;
 }
 
 footer{
