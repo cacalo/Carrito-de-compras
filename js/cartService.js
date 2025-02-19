@@ -1,14 +1,15 @@
 const cuentaCarritoElement = document.getElementById("cuenta-carrito");
+const keyLocalstorage = "bicicletas"
 
 /** Toma un objeto producto o un objeto con al menos un ID y lo agrega al carrito */
 function agregarAlCarrito(producto){
   //Reviso si el producto está en el carrito.
-  let memoria = JSON.parse(localStorage.getItem("bicicletas"));
+  let memoria = JSON.parse(localStorage.getItem(keyLocalstorage));
   let cantidadProductoFinal;
   //Si no hay localstorage lo creo
   if(!memoria || memoria.length === 0) {
     const nuevoProducto = getNuevoProductoParaMemoria(producto)
-    localStorage.setItem("bicicletas",JSON.stringify([nuevoProducto]));
+    localStorage.setItem(keyLocalstorage,JSON.stringify([nuevoProducto]));
     actualizarNumeroCarrito();
     cantidadProductoFinal = 1;
   }
@@ -26,7 +27,7 @@ function agregarAlCarrito(producto){
       nuevaMemoria[indiceProducto].cantidad ++;
       cantidadProductoFinal = nuevaMemoria[indiceProducto].cantidad;
     }
-    localStorage.setItem("bicicletas",JSON.stringify(nuevaMemoria));
+    localStorage.setItem(keyLocalstorage,JSON.stringify(nuevaMemoria));
     actualizarNumeroCarrito();
     return cantidadProductoFinal;
   }
@@ -34,7 +35,8 @@ function agregarAlCarrito(producto){
 
 /** Resta una unidad de un producto del carrito */
 function restarAlCarrito(producto){
-  let memoria = JSON.parse(localStorage.getItem("bicicletas"));
+  let memoria = JSON.parse(localStorage.getItem(keyLocalstorage));
+  if(!memoria) return console.warn("Error restando al carrito: Carrito no encontrado en memoria")
   let cantidadProductoFinal = 0;
   const indiceProducto = memoria.findIndex(bicicleta => bicicleta.id === producto.id)
   let nuevaMemoria = memoria;
@@ -43,7 +45,7 @@ function restarAlCarrito(producto){
   if(cantidadProductoFinal === 0){
     nuevaMemoria.splice(indiceProducto,1)
   };
-  localStorage.setItem("bicicletas",JSON.stringify(nuevaMemoria));
+  localStorage.setItem(keyLocalstorage,JSON.stringify(nuevaMemoria));
   actualizarNumeroCarrito();
   return cantidadProductoFinal;
 }
@@ -58,7 +60,7 @@ function getNuevoProductoParaMemoria(producto){
 /** Actualiza el número del carrito del header */
 function actualizarNumeroCarrito(){
   let cuenta = 0;
-  const memoria = JSON.parse(localStorage.getItem("bicicletas"));
+  const memoria = JSON.parse(localStorage.getItem(keyLocalstorage));
   if(memoria && memoria.length > 0){
     cuenta = memoria.reduce((acum, current)=>acum+current.cantidad,0)
     return cuentaCarritoElement.innerText = cuenta;
@@ -68,7 +70,7 @@ function actualizarNumeroCarrito(){
 
 /** Reinicia el carrito */
 function reiniciarCarrito(){
-  localStorage.removeItem("bicicletas");
+  localStorage.removeItem(keyLocalstorage);
   actualizarNumeroCarrito();
 }
 
